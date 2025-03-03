@@ -88,6 +88,7 @@ var EditorDialog = React.createClass({
             e.preventDefault();
             self.props.textEditor && self.onSave();
           }
+          util.handleFormat(e, self.formatValue);
         };
       }
     };
