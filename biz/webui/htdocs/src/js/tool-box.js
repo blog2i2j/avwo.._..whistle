@@ -61,6 +61,9 @@ var ToolBox = React.createClass({
       this._saveJSONValue
     );
   },
+  onForamt: function (e) {
+    util.handleFormat(e, this.formatJSON);
+  },
   onCodecChange: function (e) {
     this.setState(
       {
@@ -213,6 +216,7 @@ var ToolBox = React.createClass({
           className="w-tool-box-ctn"
           maxLength={MAX_JSON_LEN}
           placeholder="Input the JSON text"
+          onKeyDown={this.onForamt}
         />
         <div className="w-detail-inspectors-title" style={{ height: 20 }}>
           <button

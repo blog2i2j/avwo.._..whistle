@@ -2730,3 +2730,10 @@ exports.showJSONDialog = function(data, keyPath) {
     events.trigger('showJsonViewDialog', [str, Array.isArray(keyPath) ? keyPath : null]);
   }
 };
+
+exports.handleFormat = function(e, onFormat) {
+  if (e.shiftKey && e.keyCode === 70  && (e.metaKey || e.ctrlKey)) {
+    onFormat(e);
+    e.preventDefault();
+  }
+};
