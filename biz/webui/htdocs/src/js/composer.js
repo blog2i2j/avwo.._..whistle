@@ -1087,6 +1087,10 @@ var Composer = React.createClass({
       }
     }
   },
+  onFormat: function(e) {
+    util.handleFormat(e, this.formatJSON);
+    this.onKeyDown(e);
+  },
   showCookiesDialog: function() {
     var self = this;
     var url = ReactDOM.findDOMNode(self.refs.url).value;
@@ -1838,7 +1842,7 @@ var Composer = React.createClass({
                         hasBody && !disableBody ? 'lightyellow' : undefined,
                       fontFamily: isHexText ? 'monospace' : undefined
                     }}
-                    onKeyDown={this.onKeyDown}
+                    onKeyDown={this.onFormat}
                     ref="body"
                     placeholder={'Input the ' + (isHexText ? 'hex text' : 'body')}
                     className={
