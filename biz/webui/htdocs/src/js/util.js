@@ -2737,3 +2737,16 @@ exports.handleFormat = function(e, onFormat) {
     e.preventDefault();
   }
 };
+
+exports.handleTab = function(textarea) {
+  textarea.addEventListener('keydown', function(e) {
+    if (e.keyCode === 9) {
+      e.preventDefault();
+      var start = textarea.selectionStart;
+      var end = textarea.selectionEnd;
+      var value = textarea.value;
+      textarea.value = value.substring(0, start) + '  ' + value.substring(end);
+      textarea.selectionStart = textarea.selectionEnd = start + 2;
+    }
+  });
+};

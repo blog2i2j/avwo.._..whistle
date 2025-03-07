@@ -90,6 +90,7 @@ var EditorDialog = React.createClass({
           }
           util.handleFormat(e, self.formatValue);
         };
+        util.handleTab(textarea);
       }
     };
     iframe.onload = initTextArea;
