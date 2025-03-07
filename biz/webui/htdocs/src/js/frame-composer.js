@@ -157,6 +157,7 @@ var FrameComposer = React.createClass({
   },
   onForamt: function (e) {
     util.handleFormat(e, this.format);
+    util.handleTab(e);
   },
   setTextarea: function (text) {
     this.setState({ text: text });
