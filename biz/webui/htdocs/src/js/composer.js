@@ -1087,8 +1087,13 @@ var Composer = React.createClass({
       }
     }
   },
+  formatHeaders: function(e) {
+    util.handleTab(e);
+    this.onKeyDown(e);
+  },
   onFormat: function(e) {
     util.handleFormat(e, this.formatJSON);
+    util.handleTab(e);
     this.onKeyDown(e);
   },
   showCookiesDialog: function() {
@@ -1616,6 +1621,7 @@ var Composer = React.createClass({
               <textarea
                 readOnly={disableComposerRules || pending}
                 defaultValue={rules}
+                onKeyDown={util.handleTab}
                 ref="composerRules"
                 onChange={this.onRulesChange}
                 onDoubleClick={this.enableRules}
@@ -1732,7 +1738,7 @@ var Composer = React.createClass({
                     defaultValue={state.headers}
                     onChange={this.onComposerChange}
                     maxLength={MAX_HEADERS_SIZE}
-                    onKeyDown={this.onKeyDown}
+                    onKeyDown={this.formatHeaders}
                     ref="headers"
                     placeholder="Input the headers"
                     name="headers"
