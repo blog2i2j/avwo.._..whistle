@@ -63,6 +63,7 @@ var ToolBox = React.createClass({
   },
   onForamt: function (e) {
     util.handleFormat(e, this.formatJSON);
+    util.handleTab(e);
   },
   onCodecChange: function (e) {
     this.setState(
@@ -187,6 +188,7 @@ var ToolBox = React.createClass({
         </div>
         <textarea
           onChange={this.onQRCodeChange}
+          onKeyDown={util.handleTab}
           value={qrcodeValue}
           className="w-tool-box-ctn"
           maxLength={MAX_QRCODE_LEN}
@@ -253,6 +255,7 @@ var ToolBox = React.createClass({
         </div>
         <textarea
           onChange={this.onCodecChange}
+          onKeyDown={util.handleTab}
           value={codecText}
           className="w-tool-box-ctn"
           maxLength={MAX_TEXT_LEN}

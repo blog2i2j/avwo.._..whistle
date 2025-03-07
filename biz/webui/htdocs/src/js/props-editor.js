@@ -413,6 +413,7 @@ var PropsEditor = React.createClass({
                   maxLength={MAX_VALUE_LEN}
                   placeholder="Input the value"
                   className={'form-control' + (filename ? ' hide' : '')}
+                  onKeyDown={util.handleTab}
                 />
                 <button
                   onClick={this.onUpload}
