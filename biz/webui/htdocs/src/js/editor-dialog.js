@@ -89,8 +89,8 @@ var EditorDialog = React.createClass({
             self.props.textEditor && self.onSave();
           }
           util.handleFormat(e, self.formatValue);
+          util.handleTab(e);
         };
-        util.handleTab(textarea);
       }
     };
     iframe.onload = initTextArea;

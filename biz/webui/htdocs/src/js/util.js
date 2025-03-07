@@ -2738,15 +2738,15 @@ exports.handleFormat = function(e, onFormat) {
   }
 };
 
-exports.handleTab = function(textarea) {
-  textarea.addEventListener('keydown', function(e) {
-    if (e.keyCode === 9) {
-      e.preventDefault();
-      var start = textarea.selectionStart;
-      var end = textarea.selectionEnd;
-      var value = textarea.value;
-      textarea.value = value.substring(0, start) + '  ' + value.substring(end);
-      textarea.selectionStart = textarea.selectionEnd = start + 2;
-    }
-  });
+exports.handleTab = function(e) {
+  var target = e.target;
+  if (e.keyCode !== 9 || e.altKey || target.readOnly || target.disabled) {
+    return;
+  }
+  e.preventDefault();
+  var start = target.selectionStart;
+  var end = target.selectionEnd;
+  var value = target.value;
+  target.value = value.substring(0, start) + '  ' + value.substring(end);
+  target.selectionStart = target.selectionEnd = start + 2;
 };

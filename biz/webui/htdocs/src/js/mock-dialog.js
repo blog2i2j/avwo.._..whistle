@@ -417,8 +417,8 @@ var MockDialog = React.createClass({
             e.preventDefault();
           }
           util.handleFormat(e, self.formatValue);
+          util.handleTab(e);
         };
-        util.handleTab(textarea);
       }
     };
     iframe.onload = initTextArea;
