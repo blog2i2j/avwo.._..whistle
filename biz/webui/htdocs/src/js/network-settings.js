@@ -121,6 +121,7 @@ var Settings = React.createClass({
     if ((e.ctrlKey || e.metaKey) && e.keyCode == 88) {
       e.stopPropagation();
     }
+    util.handleTab(e);
   },
   onRowsChange: function (e) {
     NetworkModal.setMaxRows(e.target.value);
@@ -223,7 +224,7 @@ var Settings = React.createClass({
     if (util.isBool(disabledHNR) && disabledHNR !== (storage.get('disabledHNR') === '1')) {
       storage.set('disabledHNR', disabledHNR ? '1' : '');
     }
-    
+
     var disabledFilterText = settings.disabledFilterText;
     if (util.isBool(disabledFilterText) && disabledFilterText !== !!state.disabledFilterText) {
       state.disabledFilterText = disabledFilterText;
@@ -241,7 +242,7 @@ var Settings = React.createClass({
       state.excludeText = excludeText;
       filterTextChanged = true;
     }
-  
+
     var filterText = settings.filterText;
     if (util.isString(filterText) && filterText !== state.filterText) {
       state.filterText = filterText;
@@ -272,7 +273,7 @@ var Settings = React.createClass({
       events.trigger('onColumnsChanged');
     }
     this.setState({});
-    
+
     ['Custom1', 'Custom2'].forEach(function(name) {
       var lname = name.toLowerCase();
       var keyName = lname + 'Key';

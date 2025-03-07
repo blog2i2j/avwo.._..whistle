@@ -675,6 +675,7 @@ var Home = React.createClass({
               className={'w-plugin-update-cmd' + (install ? ' w-plugin-install' : '')}
               maxLength={install ? 360 : undefined}
               onChange={this.onCmdChange}
+              onKeyDown={util.handleTab}
             />
             <div
               style={{
