@@ -270,7 +270,6 @@ var JSONTree = (function (_React$Component) {
       height += selectedText ? 30 : 0;
       var isRoot = keyPathLen === 1;
       var ctxMenu = _contextMenu.util.getMenuPosition(e, 110, height);
-      ctxMenu.list = contextMenuList;
       ctxMenu.className = 'w-inspectors-ctx-menu';
       contextMenuList[0].copyText = selectedText;
       contextMenuList[0].hide = !selectedText;
@@ -291,6 +290,13 @@ var JSONTree = (function (_React$Component) {
         label.closest('li').parent().closest('li').find('div:first').click();
       };
       contextMenuList[3].hide = isRoot;
+      var menus = contextMenuList;
+      if (!target.closest('label').length) {
+        menus = menus.map(_contextMenu.util.noop);
+        menus[1] = contextMenuList[2];
+        menus[2] = contextMenuList[1];
+      }
+      ctxMenu.list = menus;
       _this.refs.contextMenu.show(ctxMenu); // eslint-disable-line
       e.preventDefault();
       e.stopPropagation();
