@@ -304,7 +304,7 @@ var Row = React.createClass({
     var columnList = p.columnList;
     var item = p.item;
     var style = item.style;
-    
+
     return (
       <table className="table w-req-table" key={p.key} style={p.style} data-id={item.id}>
         <tbody>
@@ -1131,6 +1131,7 @@ var ReqData = React.createClass({
     var data = util.getMenuPosition(e, 110, height);
     data.list = contextMenuList;
     data.className = data.marginRight < 360 ? 'w-ctx-menu-left' : '';
+    data.className += pluginItem.hide ? '' : ' w-ctx-menu-others';
     this.refs.contextMenu.show(data);
   },
   updateList: function () {
