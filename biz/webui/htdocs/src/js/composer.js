@@ -1641,6 +1641,7 @@ var Composer = React.createClass({
                   name="Request"
                   className={showRequest ? 'w-tab-btn w-active' : 'w-tab-btn'}
                 >
+                  <span className="glyphicon glyphicon-arrow-right" />
                   Request
                 </button>
                 <button
@@ -1649,6 +1650,7 @@ var Composer = React.createClass({
                   name="Response"
                   className={showResponse ? 'w-tab-btn w-active' : 'w-tab-btn'}
                 >
+                  <span className="glyphicon glyphicon-arrow-left" />
                   Response
                 </button>
               </div>
