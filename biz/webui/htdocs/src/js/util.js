@@ -181,14 +181,15 @@ var PROPS_MENUS = [
   }
 ];
 
-exports.handlePropsContextMenu = function(e, ctxMenu, target) {
-  target = target ? $(target) : $(e.target).closest('tr');
-  if (!target.length) {
+exports.handlePropsContextMenu = function(e, ctxMenu) {
+  var target = $(e.target);
+  var row = target.closest('tr');
+  if (!row.length) {
     return;
   }
   var text = getSelectedText(e.clientX, e.clientY);
-  var key = target.attr('data-name');
-  var value = target.attr('data-value');
+  var key = row.attr('data-name');
+  var value = row.attr('data-value');
   if (!text && !key && !value) {
     return;
   }
@@ -200,7 +201,13 @@ exports.handlePropsContextMenu = function(e, ctxMenu, target) {
   PROPS_MENUS[2].copyText = value;
   var height = 10 + (text ? 30 : 0) + (key ? 30 : 0) + (value ? 30 : 0);
   var data = getMenuPosition(e, 110, height);
-  data.list = PROPS_MENUS;
+  var list = PROPS_MENUS;
+  if (!target.closest('th').length) {
+    list = list.map(noop);
+    list[1] = PROPS_MENUS[2];
+    list[2] = PROPS_MENUS[1];
+  }
+  data.list = list;
   e.preventDefault();
   ctxMenu.show(data);
 };
